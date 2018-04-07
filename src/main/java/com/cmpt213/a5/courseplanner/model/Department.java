@@ -19,7 +19,7 @@ public class Department {
         subject = departmentRawData.get(0).getSubject();
 
 
-        Collections.sort(departmentRawData, new RawDataByCatalogNumber());
+        Collections.sort(departmentRawData, new RawDataSortByCatalogNumber());
 
         List<RawData> courseRawData = new ArrayList<>();
 
