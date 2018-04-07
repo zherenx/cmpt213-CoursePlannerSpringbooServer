@@ -1,0 +1,1055 @@
+
+$ ./curl_commands.sh
++ SERVER=localhost:8080
+
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/about
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+{
+  "appName" : "Brian's Awesome Sample App",
+  "authorName" : "Brian Fraser"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/dump-model
+HTTP/1.1 200
+Content-Length: 0
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
++ DEPT=2
++ COURSE=103
++ OFFERING=7063
+
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+[ {
+  "deptId" : 10,
+  "name" : "CHIN"
+}, {
+  "deptId" : 9,
+  "name" : "CMNS"
+}, {
+  "deptId" : 2,
+  "name" : "CMPT"
+}, {
+  "deptId" : 5,
+  "name" : "DDP"
+}, {
+  "deptId" : 0,
+  "name" : "ENSC"
+}, {
+  "deptId" : 12,
+  "name" : "IART"
+}, {
+  "deptId" : 4,
+  "name" : "IAT"
+}, {
+  "deptId" : 11,
+  "name" : "KIN"
+}, {
+  "deptId" : 7,
+  "name" : "MACM"
+}, {
+  "deptId" : 3,
+  "name" : "MATH"
+}, {
+  "deptId" : 1,
+  "name" : "MSE"
+}, {
+  "deptId" : 8,
+  "name" : "REM"
+}, {
+  "deptId" : 6,
+  "name" : "TECH"
+}, {
+  "deptId" : 13,
+  "name" : "WKTM"
+} ]
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments/2/courses
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+[ {
+  "courseId" : 853,
+  "catalogNumber" : "100"
+}, {
+  "courseId" : 261,
+  "catalogNumber" : "102"
+}, {
+  "courseId" : 143,
+  "catalogNumber" : "105W"
+}, {
+  "courseId" : 69,
+  "catalogNumber" : "106"
+}, {
+  "courseId" : 513,
+  "catalogNumber" : "110"
+}, {
+  "courseId" : 656,
+  "catalogNumber" : "118"
+}, {
+  "courseId" : 369,
+  "catalogNumber" : "120"
+}, {
+  "courseId" : 148,
+  "catalogNumber" : "125"
+}, {
+  "courseId" : 149,
+  "catalogNumber" : "126"
+}, {
+  "courseId" : 17,
+  "catalogNumber" : "127"
+}, {
+  "courseId" : 147,
+  "catalogNumber" : "128"
+}, {
+  "courseId" : 67,
+  "catalogNumber" : "129"
+}, {
+  "courseId" : 45,
+  "catalogNumber" : "130"
+}, {
+  "courseId" : 31,
+  "catalogNumber" : "135"
+}, {
+  "courseId" : 192,
+  "catalogNumber" : "150"
+}, {
+  "courseId" : 194,
+  "catalogNumber" : "165"
+}, {
+  "courseId" : 20,
+  "catalogNumber" : "166"
+}, {
+  "courseId" : 610,
+  "catalogNumber" : "170"
+}, {
+  "courseId" : 756,
+  "catalogNumber" : "212"
+}, {
+  "courseId" : 103,
+  "catalogNumber" : "213"
+}, {
+  "courseId" : 519,
+  "catalogNumber" : "218"
+}, {
+  "courseId" : 368,
+  "catalogNumber" : "225"
+}, {
+  "courseId" : 447,
+  "catalogNumber" : "250"
+}, {
+  "courseId" : 648,
+  "catalogNumber" : "261"
+}, {
+  "courseId" : 193,
+  "catalogNumber" : "275"
+}, {
+  "courseId" : 35,
+  "catalogNumber" : "276"
+}, {
+  "courseId" : 4,
+  "catalogNumber" : "295"
+}, {
+  "courseId" : 629,
+  "catalogNumber" : "2XX"
+}, {
+  "courseId" : 382,
+  "catalogNumber" : "300"
+}, {
+  "courseId" : 825,
+  "catalogNumber" : "301"
+}, {
+  "courseId" : 734,
+  "catalogNumber" : "305"
+}, {
+  "courseId" : 386,
+  "catalogNumber" : "307"
+}, {
+  "courseId" : 446,
+  "catalogNumber" : "308"
+}, {
+  "courseId" : 222,
+  "catalogNumber" : "310"
+}, {
+  "courseId" : 764,
+  "catalogNumber" : "318"
+}, {
+  "courseId" : 221,
+  "catalogNumber" : "320"
+}, {
+  "courseId" : 33,
+  "catalogNumber" : "322W"
+}, {
+  "courseId" : 257,
+  "catalogNumber" : "340"
+}, {
+  "courseId" : 385,
+  "catalogNumber" : "354"
+}, {
+  "courseId" : 220,
+  "catalogNumber" : "361"
+}, {
+  "courseId" : 355,
+  "catalogNumber" : "363"
+}, {
+  "courseId" : 224,
+  "catalogNumber" : "365"
+}, {
+  "courseId" : 828,
+  "catalogNumber" : "368"
+}, {
+  "courseId" : 223,
+  "catalogNumber" : "370"
+}, {
+  "courseId" : 210,
+  "catalogNumber" : "371"
+}, {
+  "courseId" : 36,
+  "catalogNumber" : "373"
+}, {
+  "courseId" : 801,
+  "catalogNumber" : "375"
+}, {
+  "courseId" : 131,
+  "catalogNumber" : "376W"
+}, {
+  "courseId" : 516,
+  "catalogNumber" : "379"
+}, {
+  "courseId" : 209,
+  "catalogNumber" : "383"
+}, {
+  "courseId" : 788,
+  "catalogNumber" : "384"
+}, {
+  "courseId" : 792,
+  "catalogNumber" : "401"
+}, {
+  "courseId" : 132,
+  "catalogNumber" : "404"
+}, {
+  "courseId" : 196,
+  "catalogNumber" : "405"
+}, {
+  "courseId" : 262,
+  "catalogNumber" : "406"
+}, {
+  "courseId" : 195,
+  "catalogNumber" : "407"
+}, {
+  "courseId" : 765,
+  "catalogNumber" : "408"
+}, {
+  "courseId" : 744,
+  "catalogNumber" : "409"
+}, {
+  "courseId" : 235,
+  "catalogNumber" : "411"
+}, {
+  "courseId" : 743,
+  "catalogNumber" : "412"
+}, {
+  "courseId" : 218,
+  "catalogNumber" : "413"
+}, {
+  "courseId" : 217,
+  "catalogNumber" : "414"
+}, {
+  "courseId" : 389,
+  "catalogNumber" : "415"
+}, {
+  "courseId" : 387,
+  "catalogNumber" : "416"
+}, {
+  "courseId" : 567,
+  "catalogNumber" : "417"
+}, {
+  "courseId" : 677,
+  "catalogNumber" : "418"
+}, {
+  "courseId" : 521,
+  "catalogNumber" : "419"
+}, {
+  "courseId" : 211,
+  "catalogNumber" : "426"
+}, {
+  "courseId" : 384,
+  "catalogNumber" : "427"
+}, {
+  "courseId" : 208,
+  "catalogNumber" : "428"
+}, {
+  "courseId" : 520,
+  "catalogNumber" : "429"
+}, {
+  "courseId" : 391,
+  "catalogNumber" : "430"
+}, {
+  "courseId" : 48,
+  "catalogNumber" : "431"
+}, {
+  "courseId" : 552,
+  "catalogNumber" : "433"
+}, {
+  "courseId" : 137,
+  "catalogNumber" : "441"
+}, {
+  "courseId" : 213,
+  "catalogNumber" : "454"
+}, {
+  "courseId" : 632,
+  "catalogNumber" : "456"
+}, {
+  "courseId" : 176,
+  "catalogNumber" : "459"
+}, {
+  "courseId" : 572,
+  "catalogNumber" : "461"
+}, {
+  "courseId" : 134,
+  "catalogNumber" : "464"
+}, {
+  "courseId" : 258,
+  "catalogNumber" : "466"
+}, {
+  "courseId" : 502,
+  "catalogNumber" : "467"
+}, {
+  "courseId" : 49,
+  "catalogNumber" : "468"
+}, {
+  "courseId" : 390,
+  "catalogNumber" : "469"
+}, {
+  "courseId" : 212,
+  "catalogNumber" : "470"
+}, {
+  "courseId" : 396,
+  "catalogNumber" : "471"
+}, {
+  "courseId" : 662,
+  "catalogNumber" : "473"
+}, {
+  "courseId" : 118,
+  "catalogNumber" : "474"
+}, {
+  "courseId" : 233,
+  "catalogNumber" : "475"
+}, {
+  "courseId" : 123,
+  "catalogNumber" : "477"
+}, {
+  "courseId" : 201,
+  "catalogNumber" : "479"
+}, {
+  "courseId" : 230,
+  "catalogNumber" : "481"
+}, {
+  "courseId" : 678,
+  "catalogNumber" : "489"
+}, {
+  "courseId" : 126,
+  "catalogNumber" : "496"
+}, {
+  "courseId" : 442,
+  "catalogNumber" : "497"
+}, {
+  "courseId" : 119,
+  "catalogNumber" : "498"
+}, {
+  "courseId" : 816,
+  "catalogNumber" : "499"
+}, {
+  "courseId" : 32,
+  "catalogNumber" : "626"
+}, {
+  "courseId" : 78,
+  "catalogNumber" : "627"
+}, {
+  "courseId" : 16,
+  "catalogNumber" : "628"
+}, {
+  "courseId" : 798,
+  "catalogNumber" : "701"
+}, {
+  "courseId" : 379,
+  "catalogNumber" : "705"
+}, {
+  "courseId" : 843,
+  "catalogNumber" : "706"
+}, {
+  "courseId" : 524,
+  "catalogNumber" : "710"
+}, {
+  "courseId" : 88,
+  "catalogNumber" : "711"
+}, {
+  "courseId" : 601,
+  "catalogNumber" : "720"
+}, {
+  "courseId" : 634,
+  "catalogNumber" : "721"
+}, {
+  "courseId" : 34,
+  "catalogNumber" : "726"
+}, {
+  "courseId" : 780,
+  "catalogNumber" : "731"
+}, {
+  "courseId" : 621,
+  "catalogNumber" : "732"
+}, {
+  "courseId" : 66,
+  "catalogNumber" : "733"
+}, {
+  "courseId" : 448,
+  "catalogNumber" : "740"
+}, {
+  "courseId" : 372,
+  "catalogNumber" : "741"
+}, {
+  "courseId" : 755,
+  "catalogNumber" : "745"
+}, {
+  "courseId" : 703,
+  "catalogNumber" : "756"
+}, {
+  "courseId" : 784,
+  "catalogNumber" : "761"
+}, {
+  "courseId" : 763,
+  "catalogNumber" : "764"
+}, {
+  "courseId" : 785,
+  "catalogNumber" : "765"
+}, {
+  "courseId" : 63,
+  "catalogNumber" : "767"
+}, {
+  "courseId" : 553,
+  "catalogNumber" : "768"
+}, {
+  "courseId" : 548,
+  "catalogNumber" : "771"
+}, {
+  "courseId" : 507,
+  "catalogNumber" : "777"
+}, {
+  "courseId" : 687,
+  "catalogNumber" : "781"
+}, {
+  "courseId" : 640,
+  "catalogNumber" : "813"
+}, {
+  "courseId" : 265,
+  "catalogNumber" : "814"
+}, {
+  "courseId" : 397,
+  "catalogNumber" : "815"
+}, {
+  "courseId" : 525,
+  "catalogNumber" : "816"
+}, {
+  "courseId" : 523,
+  "catalogNumber" : "820"
+}, {
+  "courseId" : 855,
+  "catalogNumber" : "821"
+}, {
+  "courseId" : 526,
+  "catalogNumber" : "822"
+}, {
+  "courseId" : 229,
+  "catalogNumber" : "823"
+}, {
+  "courseId" : 236,
+  "catalogNumber" : "825"
+}, {
+  "courseId" : 745,
+  "catalogNumber" : "826"
+}, {
+  "courseId" : 395,
+  "catalogNumber" : "827"
+}, {
+  "courseId" : 665,
+  "catalogNumber" : "828"
+}, {
+  "courseId" : 710,
+  "catalogNumber" : "829"
+}, {
+  "courseId" : 393,
+  "catalogNumber" : "843"
+}, {
+  "courseId" : 329,
+  "catalogNumber" : "880"
+}, {
+  "courseId" : 374,
+  "catalogNumber" : "881"
+}, {
+  "courseId" : 171,
+  "catalogNumber" : "882"
+}, {
+  "courseId" : 202,
+  "catalogNumber" : "884"
+}, {
+  "courseId" : 481,
+  "catalogNumber" : "885"
+}, {
+  "courseId" : 485,
+  "catalogNumber" : "886"
+}, {
+  "courseId" : 741,
+  "catalogNumber" : "888"
+}, {
+  "courseId" : 376,
+  "catalogNumber" : "889"
+}, {
+  "courseId" : 766,
+  "catalogNumber" : "891"
+}, {
+  "courseId" : 219,
+  "catalogNumber" : "894"
+}, {
+  "courseId" : 736,
+  "catalogNumber" : "895"
+}, {
+  "courseId" : 425,
+  "catalogNumber" : "896"
+}, {
+  "courseId" : 644,
+  "catalogNumber" : "897"
+}, {
+  "courseId" : 246,
+  "catalogNumber" : "898"
+}, {
+  "courseId" : 392,
+  "catalogNumber" : "899"
+}, {
+  "courseId" : 565,
+  "catalogNumber" : "XX1"
+} ]
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments/2/courses/103/offerings
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+[ {
+  "courseOfferingId" : 295,
+  "course" : {
+    "courseId" : 103,
+    "catalogNumber" : "213"
+  },
+  "location" : "SURREY",
+  "instructors" : "Brian Fraser",
+  "term" : "Spring",
+  "semesterCode" : 1131,
+  "year" : 2013
+}, {
+  "courseOfferingId" : 2734,
+  "course" : {
+    "courseId" : 103,
+    "catalogNumber" : "213"
+  },
+  "location" : "SURREY",
+  "instructors" : "Brian Fraser",
+  "term" : "Spring",
+  "semesterCode" : 1141,
+  "year" : 2014
+}, {
+  "courseOfferingId" : 2772,
+  "course" : {
+    "courseId" : 103,
+    "catalogNumber" : "213"
+  },
+  "location" : "SURREY",
+  "instructors" : "Brian Fraser",
+  "term" : "Spring",
+  "semesterCode" : 1151,
+  "year" : 2015
+}, {
+  "courseOfferingId" : 4834,
+  "course" : {
+    "courseId" : 103,
+    "catalogNumber" : "213"
+  },
+  "location" : "SURREY",
+  "instructors" : "Karol Swietlicki",
+  "term" : "Spring",
+  "semesterCode" : 1161,
+  "year" : 2016
+}, {
+  "courseOfferingId" : 192,
+  "course" : {
+    "courseId" : 103,
+    "catalogNumber" : "213"
+  },
+  "location" : "SURREY",
+  "instructors" : "Brian Fraser",
+  "term" : "Summer",
+  "semesterCode" : 1164,
+  "year" : 2016
+}, {
+  "courseOfferingId" : 7054,
+  "course" : {
+    "courseId" : 103,
+    "catalogNumber" : "213"
+  },
+  "location" : "SURREY",
+  "instructors" : "Brian Fraser",
+  "term" : "Spring",
+  "semesterCode" : 1171,
+  "year" : 2017
+}, {
+  "courseOfferingId" : 7063,
+  "course" : {
+    "courseId" : 103,
+    "catalogNumber" : "213"
+  },
+  "location" : "SURREY",
+  "instructors" : "Brian Fraser",
+  "term" : "Spring",
+  "semesterCode" : 1181,
+  "year" : 2018
+} ]
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments/2/courses/103/offerings/7063
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+[ {
+  "type" : "LEC",
+  "enrollmentCap" : 90,
+  "enrollmentTotal" : 91
+} ]
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments/99999/courses
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+{
+  "timestamp" : 1522044468041,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.model.DepartmentManager$DepartmentNotFoundException",
+  "message" : "Department of ID 99999 not found.",
+  "path" : "/api/departments/99999/courses"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments/2/courses/99999/offerings
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+{
+  "timestamp" : 1522044468117,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.model.Department$CourseNotFoundException",
+  "message" : "Course of ID 99999 not found.",
+  "path" : "/api/departments/2/courses/99999/offerings"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments/9999/courses/103/offerings
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+{
+  "timestamp" : 1522044468171,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.model.DepartmentManager$DepartmentNotFoundException",
+  "message" : "Department of ID 9999 not found.",
+  "path" : "/api/departments/9999/courses/103/offerings"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments/99999/courses/103/offerings/7063
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+{
+  "timestamp" : 1522044468232,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.model.DepartmentManager$DepartmentNotFoundException",
+  "message" : "Department of ID 99999 not found.",
+  "path" : "/api/departments/99999/courses/103/offerings/7063"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments/2/courses/9999999/offerings/7063
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+{
+  "timestamp" : 1522044468295,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.model.Department$CourseNotFoundException",
+  "message" : "Course of ID 9999999 not found.",
+  "path" : "/api/departments/2/courses/9999999/offerings/7063"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/departments/2/courses/103/offerings/99999
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+{
+  "timestamp" : 1522044468354,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.model.Course$OfferingNotFoundException",
+  "message" : "Course offering of ID 99999 not found.",
+  "path" : "/api/departments/2/courses/103/offerings/99999"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET 'localhost:8080/api/stats/students-per-semester?deptId=2'
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:47 GMT
+
+[ {
+  "semesterCode" : 1081,
+  "totalCoursesTaken" : 1974
+}, {
+  "semesterCode" : 1084,
+  "totalCoursesTaken" : 1166
+}, {
+  "semesterCode" : 1087,
+  "totalCoursesTaken" : 2703
+}, {
+  "semesterCode" : 1091,
+  "totalCoursesTaken" : 2136
+}, {
+  "semesterCode" : 1094,
+  "totalCoursesTaken" : 1153
+}, {
+  "semesterCode" : 1097,
+  "totalCoursesTaken" : 2989
+}, {
+  "semesterCode" : 1101,
+  "totalCoursesTaken" : 2470
+}, {
+  "semesterCode" : 1104,
+  "totalCoursesTaken" : 1547
+}, {
+  "semesterCode" : 1107,
+  "totalCoursesTaken" : 3205
+}, {
+  "semesterCode" : 1111,
+  "totalCoursesTaken" : 2822
+}, {
+  "semesterCode" : 1114,
+  "totalCoursesTaken" : 1691
+}, {
+  "semesterCode" : 1117,
+  "totalCoursesTaken" : 3273
+}, {
+  "semesterCode" : 1121,
+  "totalCoursesTaken" : 2957
+}, {
+  "semesterCode" : 1124,
+  "totalCoursesTaken" : 2020
+}, {
+  "semesterCode" : 1127,
+  "totalCoursesTaken" : 3285
+}, {
+  "semesterCode" : 1131,
+  "totalCoursesTaken" : 3017
+}, {
+  "semesterCode" : 1134,
+  "totalCoursesTaken" : 1921
+}, {
+  "semesterCode" : 1137,
+  "totalCoursesTaken" : 3827
+}, {
+  "semesterCode" : 1141,
+  "totalCoursesTaken" : 3159
+}, {
+  "semesterCode" : 1144,
+  "totalCoursesTaken" : 1832
+}, {
+  "semesterCode" : 1147,
+  "totalCoursesTaken" : 3833
+}, {
+  "semesterCode" : 1151,
+  "totalCoursesTaken" : 3356
+}, {
+  "semesterCode" : 1154,
+  "totalCoursesTaken" : 2006
+}, {
+  "semesterCode" : 1157,
+  "totalCoursesTaken" : 3830
+}, {
+  "semesterCode" : 1161,
+  "totalCoursesTaken" : 2920
+}, {
+  "semesterCode" : 1164,
+  "totalCoursesTaken" : 2273
+}, {
+  "semesterCode" : 1167,
+  "totalCoursesTaken" : 4132
+}, {
+  "semesterCode" : 1171,
+  "totalCoursesTaken" : 3326
+}, {
+  "semesterCode" : 1174,
+  "totalCoursesTaken" : 2066
+}, {
+  "semesterCode" : 1177,
+  "totalCoursesTaken" : 4257
+}, {
+  "semesterCode" : 1181,
+  "totalCoursesTaken" : 3994
+} ]
+
++ curl -i -s -H 'Content-Type: application/json' -X GET 'localhost:8080/api/stats/students-per-semester?deptId=9999'
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "timestamp" : 1522044468473,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.model.DepartmentManager$DepartmentNotFoundException",
+  "message" : "Department of ID 9999 not found.",
+  "path" : "/api/stats/students-per-semester"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X POST -d '{
+        "semester": 1191,
+        "subjectName": "CMPT",
+        "catalogNumber": 213,
+        "location": "SURREY",
+        "enrollmentCap": 90,
+        "component": "LEC",
+        "enrollmentTotal": 89,
+        "instructor": "Brian Fraser"
+    }' localhost:8080/api/addoffering
+HTTP/1.1 201
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "type" : "LEC",
+  "enrollmentCap" : 90,
+  "enrollmentTotal" : 89
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X POST -d '{
+        "semester": 1181,
+        "subjectName": "CMPT",
+        "catalogNumber": 300,
+        "location": "SURREY",
+        "enrollmentCap": 101,
+        "component": "TUT",
+        "enrollmentTotal": 100,
+        "instructor": "Dr. Evil"
+    }' localhost:8080/api/addoffering
+HTTP/1.1 201
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "type" : "TUT",
+  "enrollmentCap" : 101,
+  "enrollmentTotal" : 100
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X POST -d '{
+        "semester": 1191,
+        "subjectName": "CMPT",
+        "catalogNumber": 911,
+        "location": "SURREY",
+        "enrollmentCap": 10,
+        "component": "TUT",
+        "enrollmentTotal": 6,
+        "instructor": "Dr. Alice"
+    }' localhost:8080/api/addoffering
+HTTP/1.1 201
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "type" : "TUT",
+  "enrollmentCap" : 10,
+  "enrollmentTotal" : 6
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X POST -d '{
+        "semester": 1191,
+        "subjectName": "ABCD",
+        "catalogNumber": 101,
+        "location": "Vancouver",
+        "enrollmentCap": 123,
+        "component": "LEC",
+        "enrollmentTotal": 110,
+        "instructor": "Mystery Instructor"
+    }' localhost:8080/api/addoffering
+HTTP/1.1 201
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "type" : "LEC",
+  "enrollmentCap" : 123,
+  "enrollmentTotal" : 110
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/watchers
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+[ ]
+
++ curl -i -s -H 'Content-Type: application/json' -X POST -d '{
+        "deptId": 2,
+        "courseId": 103
+    }' localhost:8080/api/watchers
+HTTP/1.1 201
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "id" : 1,
+  "department" : {
+    "deptId" : 2,
+    "name" : "CMPT"
+  },
+  "course" : {
+    "courseId" : 103,
+    "catalogNumber" : "213"
+  },
+  "events" : [ ]
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/watchers/1
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "id" : 1,
+  "department" : {
+    "deptId" : 2,
+    "name" : "CMPT"
+  },
+  "course" : {
+    "courseId" : 103,
+    "catalogNumber" : "213"
+  },
+  "events" : [ ]
+}
+
++ curl -i -X DELETE localhost:8080/api/watchers/1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0HTTP/1.1 204
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+
+
+
++ curl -i -s -H 'Content-Type: application/json' -X POST -d '{
+        "deptId": 999999,
+        "courseId": 103
+    }' localhost:8080/api/watchers
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "timestamp" : 1522044469170,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.model.DepartmentManager$DepartmentNotFoundException",
+  "message" : "Department of ID 999999 not found.",
+  "path" : "/api/watchers"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X POST -d '{
+        "deptId": 2,
+        "courseId": 99999
+    }' localhost:8080/api/watchers
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "timestamp" : 1522044469230,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.model.Department$CourseNotFoundException",
+  "message" : "Course of ID 99999 not found.",
+  "path" : "/api/watchers"
+}
+
++ curl -i -s -H 'Content-Type: application/json' -X GET localhost:8080/api/watchers/999999
+HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "timestamp" : 1522044469296,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.controllers.WatcherController$ResourceNotFoundException",
+  "message" : "Unable to find requested watcher.",
+  "path" : "/api/watchers/999999"
+}
+
++ curl -i -X DELETE localhost:8080/api/watchers/9999999
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   273    0   273    0     0    273      0 --:--:-- --:--:-- --:--:-- 18200HTTP/1.1 404
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 26 Mar 2018 06:07:48 GMT
+
+{
+  "timestamp" : 1522044469375,
+  "status" : 404,
+  "error" : "Not Found",
+  "exception" : "ca.cmpt213.as5courseplanner.controllers.WatcherController$ResourceNotFoundException",
+  "message" : "Unable to find requested watcher.",
+  "path" : "/api/watchers/9999999"
+}
