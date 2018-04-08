@@ -14,12 +14,12 @@ public class CoursePlannerController {
 
 //    private Data data;
 
-    @GetMapping("/about")
+    @GetMapping("api/about")
     public String getDescription() {
         return "Course planner written by Zheren (Justin) Xiao!";
     }
 
-    @GetMapping("/dump-model")
+    @GetMapping("api/dump-model")
     public void processToModelDumpFormat() {
 
 ////        String pathname = "./";
