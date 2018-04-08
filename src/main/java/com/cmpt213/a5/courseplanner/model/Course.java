@@ -79,7 +79,6 @@ public class Course {
                 return offering.getComponents();
             }
         }
-        // TODO: throw offering not found exception.
-        return null;
+        throw new OfferingNotFoundException("Course offering of ID " + offeringId + " not found.");
     }
 }

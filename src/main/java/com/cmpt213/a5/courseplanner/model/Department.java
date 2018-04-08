@@ -79,8 +79,7 @@ public class Department {
                 return course.getOfferings();
             }
         }
-        // TODO: throw course not found exception.
-        return null;
+        throw new CourseNotFoundException("Course of ID " + courseId + " not found.");
     }
 
     public List<Component> getComponentsOfOffering(long courseId, long offeringId) {
@@ -89,7 +88,6 @@ public class Department {
                 return course.getComponentsOfOffering(offeringId);
             }
         }
-        // TODO: throw course not found exception.
-        return null;
+        throw new CourseNotFoundException("Course of ID " + courseId + " not found.");
     }
 }

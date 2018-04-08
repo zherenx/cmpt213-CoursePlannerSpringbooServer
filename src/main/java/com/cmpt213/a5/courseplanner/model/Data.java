@@ -66,8 +66,7 @@ public class Data {
                 return department.getCourses();
             }
         }
-        // TODO: throw exception.
-        return null;
+        throw new DepartmentNotFoundException("Department of ID " + departmentId + " not found.");
     }
 
     public List<Offering> getOfferingsOfCourse(long departmentId, long courseId) {
@@ -76,8 +75,7 @@ public class Data {
                 return department.getOfferingsOfCourse(courseId);
             }
         }
-        // TODO: throw department not found exception.
-        return null;
+        throw new DepartmentNotFoundException("Department of ID " + departmentId + " not found.");
     }
 
     public List<Component> getComponentsOfOffering(long departmentId, long courseId, long offeringId) {
@@ -86,7 +84,6 @@ public class Data {
                 return department.getComponentsOfOffering(courseId, offeringId);
             }
         }
-        // TODO: throw department not found exception.
-        return null;
+        throw new DepartmentNotFoundException("Department of ID " + departmentId + " not found.");
     }
 }
