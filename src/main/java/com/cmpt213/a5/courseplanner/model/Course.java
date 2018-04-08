@@ -18,7 +18,7 @@ public class Course {
     private String subject;
 
     @JsonIgnore
-    private List<Section> sections = new ArrayList<>();
+    private List<Offering> offerings = new ArrayList<>();
 
     public Course() {
 
@@ -34,34 +34,42 @@ public class Course {
         subject = courseRawData.get(0).getSubject();
 
         // sort courseRawData by semester and location.
-        Collections.sort(courseRawData, new RawDataSortBySection());
+        Collections.sort(courseRawData, new RawDataSortByOffering());
 
-        List<RawData> sectionRawData = new ArrayList<>();
+        List<RawData> OfferingRawData = new ArrayList<>();
 
-        sectionRawData.add(courseRawData.get(0));
+        OfferingRawData.add(courseRawData.get(0));
 
         for (int i = 1; i < courseRawData.size(); i++) {
 
             RawData previousRawData = courseRawData.get(i - 1);
             RawData currentRawData = courseRawData.get(i);
 
-            if (currentRawData.isSameSection(previousRawData)) {
-                sectionRawData.add(currentRawData);
+            if (currentRawData.isSameOffering(previousRawData)) {
+                OfferingRawData.add(currentRawData);
             } else {
 
-                sections.add(new Section(sectionRawData, nextId.incrementAndGet()));
+                offerings.add(new Offering(OfferingRawData, nextId.incrementAndGet()));
 
-                sectionRawData.clear();
-                sectionRawData.add(currentRawData);
+                OfferingRawData.clear();
+                OfferingRawData.add(currentRawData);
             }
         }
-        sections.add(new Section(sectionRawData, nextId.incrementAndGet()));
+        offerings.add(new Offering(OfferingRawData, nextId.incrementAndGet()));
     }
 
     public void printInModeDumpFormat() {
         System.out.println(subject + " " + catalogNumber);
-        for (Section section: sections) {
-            section.printInModeDumpFormat();
+        for (Offering offering : offerings) {
+            offering.printInModeDumpFormat();
         }
+    }
+
+    public long getCourseId() {
+        return courseId;
+    }
+
+    public List<Offering> getOfferings() {
+        return offerings;
     }
 }

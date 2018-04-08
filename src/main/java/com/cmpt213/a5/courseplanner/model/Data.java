@@ -69,4 +69,14 @@ public class Data {
         // TODO: throw exception.
         return null;
     }
+
+    public List<Offering> getAllOfferingsOfCourse(long departmentId, long courseId) {
+        for (Department department: departments) {
+            if (department.getDepartmentId() == departmentId) {
+                return department.getAllOfferingsOfCourse(courseId);
+            }
+        }
+        // TODO: throw department not found exception.
+        return null;
+    }
 }

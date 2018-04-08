@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Section {
+public class Offering {
 
-    @JsonProperty("courseOfferingId")
-    private long sectionId;
+    private long courseOfferingId;
 
     private String location;
 
@@ -24,15 +23,15 @@ public class Section {
     @JsonIgnore
     private List<Component> components = new ArrayList<>();
 
-    public Section() {
+    public Offering() {
 
     }
 
-    public Section(List<RawData> sectionRawData, long sectionId) {
+    public Offering(List<RawData> offeringRawData, long courseOfferingId) {
 
-        this.sectionId = sectionId;
-        location = sectionRawData.get(0).getLocation();
-        semesterCode = sectionRawData.get(0).getSemester();
+        this.courseOfferingId = courseOfferingId;
+        location = offeringRawData.get(0).getLocation();
+        semesterCode = offeringRawData.get(0).getSemester();
 
         year = 1900 + semesterCode / 100;
 
@@ -53,26 +52,26 @@ public class Section {
         }
 
         // get all instructors.
-        Collections.sort(sectionRawData, new RawDataSortByInstructor());
-        instructors.add(sectionRawData.get(0).getInstructor());
-        for (int i = 1; i < sectionRawData.size(); i++) {
-            String previousInstructor = sectionRawData.get(i - 1).getInstructor();
-            String currentInstructor = sectionRawData.get(i).getInstructor();
+        Collections.sort(offeringRawData, new RawDataSortByInstructor());
+        instructors.add(offeringRawData.get(0).getInstructor());
+        for (int i = 1; i < offeringRawData.size(); i++) {
+            String previousInstructor = offeringRawData.get(i - 1).getInstructor();
+            String currentInstructor = offeringRawData.get(i).getInstructor();
             if (!currentInstructor.equals(previousInstructor)) {
                 instructors.add(currentInstructor);
             }
         }
 
-        Collections.sort(sectionRawData, new RawDataSortByComponentCode());
+        Collections.sort(offeringRawData, new RawDataSortByComponentCode());
 
         List<RawData> componentRawData = new ArrayList<>();
 
-        componentRawData.add(sectionRawData.get(0));
+        componentRawData.add(offeringRawData.get(0));
 
-        for (int i = 1; i < sectionRawData.size(); i++) {
+        for (int i = 1; i < offeringRawData.size(); i++) {
 
-            RawData previousRawData = sectionRawData.get(i - 1);
-            RawData currentRawData = sectionRawData.get(i);
+            RawData previousRawData = offeringRawData.get(i - 1);
+            RawData currentRawData = offeringRawData.get(i);
 
             if (currentRawData.isSameComponent(previousRawData)) {
                 componentRawData.add(currentRawData);

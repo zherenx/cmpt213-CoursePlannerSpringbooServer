@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
 import java.util.List;
 
 @RestController
@@ -49,6 +48,13 @@ public class CoursePlannerController {
     public List<Course> getAllCoursesOfDepartment(@PathVariable("id") long departmentId) {
         return dataManager.getAllCoursesOfDepartment(departmentId);
     }
+
+    @GetMapping("/departments/{deptId}/courses/{courseId}/offerings")
+    public List<Offering> getAllSectionsOfCourse(@PathVariable("deptId") long departmentId, @PathVariable("courseId") long courseId) {
+        return dataManager.getAllOfferingsOfCourse(departmentId, courseId);
+    }
+
+//    @GetMapping("/departments/{deptId}/courses/{courseId}/offerings/{offeringId}")
 
 
 }

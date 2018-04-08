@@ -37,4 +37,8 @@ public class DataManager {
     public List<Course> getAllCoursesOfDepartment(long departmentId) {
         return data.getAllCoursesOfDepartment(departmentId);
     }
+
+    public List<Offering> getAllOfferingsOfCourse(long departmentId, long courseId) {
+        return data.getAllOfferingsOfCourse(departmentId, courseId);
+    }
 }

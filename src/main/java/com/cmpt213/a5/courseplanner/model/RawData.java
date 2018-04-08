@@ -58,7 +58,7 @@ public class RawData {
         return catalogNumber.equals(other.getCatalogNumber());
     }
 
-    public boolean isSameSection(RawData other) {
+    public boolean isSameOffering(RawData other) {
         return location.equals(other.getLocation()) && semester == other.getSemester();
     }
 

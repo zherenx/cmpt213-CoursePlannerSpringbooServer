@@ -65,11 +65,21 @@ public class Department {
         }
     }
 
+    public long getDepartmentId() {
+        return departmentId;
+    }
+
     public List<Course> getCourses() {
         return courses;
     }
 
-    public long getDepartmentId() {
-        return departmentId;
+    public List<Offering> getAllOfferingsOfCourse(long courseId) {
+        for (Course course: courses) {
+            if (course.getCourseId() == courseId) {
+                return course.getOfferings();
+            }
+        }
+        // TODO: throw course not found exception.
+        return null;
     }
 }
