@@ -7,39 +7,40 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::       (v1.5.10.RELEASE)
 
-2018-04-07 16:14:55.997  INFO 13742 --- [           main] c.cmpt213.a5.courseplanner.Application   : Starting Application on JX16-MBP.local with PID 13742 (/Users/zherenx/Documents/cmpt213/a5/CoursePlanner/out/production/classes started by zherenx in /Users/zherenx/Documents/cmpt213/a5/CoursePlanner)
-2018-04-07 16:14:56.003  INFO 13742 --- [           main] c.cmpt213.a5.courseplanner.Application   : No active profile set, falling back to default profiles: default
-2018-04-07 16:14:56.142  INFO 13742 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@20b2475a: startup date [Sat Apr 07 16:14:56 PDT 2018]; root of context hierarchy
+2018-04-07 18:23:11.811  INFO 14213 --- [           main] c.cmpt213.a5.courseplanner.Application   : Starting Application on JX16-MBP.local with PID 14213 (/Users/zherenx/Documents/cmpt213/a5/CoursePlanner/out/production/classes started by zherenx in /Users/zherenx/Documents/cmpt213/a5/CoursePlanner)
+2018-04-07 18:23:11.815  INFO 14213 --- [           main] c.cmpt213.a5.courseplanner.Application   : No active profile set, falling back to default profiles: default
+2018-04-07 18:23:11.939  INFO 14213 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7857fe2: startup date [Sat Apr 07 18:23:11 PDT 2018]; root of context hierarchy
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by org.springframework.cglib.core.ReflectUtils$1 (file:/Users/zherenx/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.14.RELEASE/c70ddb6204457a802d1f6882d65bca3e5b3c41df/spring-core-4.3.14.RELEASE.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
 WARNING: Please consider reporting this to the maintainers of org.springframework.cglib.core.ReflectUtils$1
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2018-04-07 16:14:57.547  INFO 13742 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
-2018-04-07 16:14:57.561  INFO 13742 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2018-04-07 16:14:57.562  INFO 13742 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.27
-2018-04-07 16:14:57.652  INFO 13742 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2018-04-07 16:14:57.652  INFO 13742 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1530 ms
-2018-04-07 16:14:57.777  INFO 13742 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
-2018-04-07 16:14:57.783  INFO 13742 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2018-04-07 16:14:57.783  INFO 13742 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2018-04-07 16:14:57.783  INFO 13742 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2018-04-07 16:14:57.783  INFO 13742 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2018-04-07 16:14:59.259  INFO 13742 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@20b2475a: startup date [Sat Apr 07 16:14:56 PDT 2018]; root of context hierarchy
-2018-04-07 16:14:59.321  INFO 13742 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/dump-model],methods=[GET]}" onto public void com.cmpt213.a5.courseplanner.controllers.CoursePlannerController.processToModelDumpFormat()
-2018-04-07 16:14:59.321  INFO 13742 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/departments],methods=[GET]}" onto public java.util.List<com.cmpt213.a5.courseplanner.model.Department> com.cmpt213.a5.courseplanner.controllers.CoursePlannerController.getAllDepartments()
-2018-04-07 16:14:59.322  INFO 13742 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/about],methods=[GET]}" onto public java.lang.String com.cmpt213.a5.courseplanner.controllers.CoursePlannerController.getDescription()
-2018-04-07 16:14:59.326  INFO 13742 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2018-04-07 16:14:59.326  INFO 13742 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2018-04-07 16:14:59.350  INFO 13742 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-04-07 16:14:59.351  INFO 13742 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-04-07 16:14:59.383  INFO 13742 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2018-04-07 16:14:59.511  INFO 13742 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2018-04-07 16:14:59.649  INFO 13742 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
-2018-04-07 16:14:59.660  INFO 13742 --- [           main] c.cmpt213.a5.courseplanner.Application   : Started Application in 4.761 seconds (JVM running for 5.597)
-2018-04-07 16:15:16.420  INFO 13742 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2018-04-07 16:15:16.420  INFO 13742 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
-2018-04-07 16:15:16.435  INFO 13742 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 15 ms
+2018-04-07 18:23:13.489  INFO 14213 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2018-04-07 18:23:13.507  INFO 14213 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-04-07 18:23:13.508  INFO 14213 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.27
+2018-04-07 18:23:13.600  INFO 14213 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-04-07 18:23:13.601  INFO 14213 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1675 ms
+2018-04-07 18:23:13.738  INFO 14213 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-04-07 18:23:13.742  INFO 14213 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-04-07 18:23:13.743  INFO 14213 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-04-07 18:23:13.743  INFO 14213 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-04-07 18:23:13.743  INFO 14213 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-04-07 18:23:15.177  INFO 14213 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7857fe2: startup date [Sat Apr 07 18:23:11 PDT 2018]; root of context hierarchy
+2018-04-07 18:23:15.245  INFO 14213 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/about],methods=[GET]}" onto public java.lang.String com.cmpt213.a5.courseplanner.controllers.CoursePlannerController.getDescription()
+2018-04-07 18:23:15.245  INFO 14213 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/dump-model],methods=[GET]}" onto public void com.cmpt213.a5.courseplanner.controllers.CoursePlannerController.processToModelDumpFormat()
+2018-04-07 18:23:15.246  INFO 14213 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/departments],methods=[GET]}" onto public java.util.List<com.cmpt213.a5.courseplanner.model.Department> com.cmpt213.a5.courseplanner.controllers.CoursePlannerController.getAllDepartments()
+2018-04-07 18:23:15.246  INFO 14213 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/departments/{id}/courses],methods=[GET]}" onto public java.util.List<com.cmpt213.a5.courseplanner.model.Course> com.cmpt213.a5.courseplanner.controllers.CoursePlannerController.getAllCoursesOfDepartment(long)
+2018-04-07 18:23:15.249  INFO 14213 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-04-07 18:23:15.250  INFO 14213 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-04-07 18:23:15.278  INFO 14213 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-04-07 18:23:15.278  INFO 14213 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-04-07 18:23:15.307  INFO 14213 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-04-07 18:23:15.464  INFO 14213 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-04-07 18:23:15.556  INFO 14213 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2018-04-07 18:23:15.574  INFO 14213 --- [           main] c.cmpt213.a5.courseplanner.Application   : Started Application in 4.819 seconds (JVM running for 5.463)
+2018-04-07 18:23:18.728  INFO 14213 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-04-07 18:23:18.728  INFO 14213 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-04-07 18:23:18.745  INFO 14213 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
 CHIN 180
 	1137 in BURNABY by Billie Ng, Haisheng Jiang, Haisheng Jiang
 		Type=TUT, Enrollment=12/30
@@ -20595,5 +20596,5 @@ WKTM 400
 		Type=SEC, Enrollment=3/50
 	1094 in SURREY by Frances McLafferty, Navinder Chima
 		Type=SEC, Enrollment=9/50
-2018-04-07 16:15:34.357  INFO 13742 --- [       Thread-2] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@20b2475a: startup date [Sat Apr 07 16:14:56 PDT 2018]; root of context hierarchy
-2018-04-07 16:15:34.361  INFO 13742 --- [       Thread-2] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-04-07 18:23:32.926  INFO 14213 --- [       Thread-2] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7857fe2: startup date [Sat Apr 07 18:23:11 PDT 2018]; root of context hierarchy
+2018-04-07 18:23:32.930  INFO 14213 --- [       Thread-2] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown

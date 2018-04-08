@@ -3,6 +3,7 @@ package com.cmpt213.a5.courseplanner.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Data {
 
@@ -13,6 +14,9 @@ public class Data {
     }
 
     public Data(List<RawData> rawData) {
+
+        AtomicLong nextId = new AtomicLong();
+
 
         if (rawData.size() == 0) {
             return;
@@ -34,14 +38,14 @@ public class Data {
                 departmentRawData.add(currentRawData);
             } else {
 
-                departments.add(new Department(departmentRawData));
+                departments.add(new Department(departmentRawData, nextId.incrementAndGet()));
 
                 departmentRawData.clear();
                 departmentRawData.add(currentRawData);
             }
         }
         // add the last department.
-        departments.add(new Department(departmentRawData));
+        departments.add(new Department(departmentRawData, nextId.incrementAndGet()));
 
     }
 
@@ -62,7 +66,6 @@ public class Data {
                 return department.getCourses();
             }
         }
-
         // TODO: throw exception.
         return null;
     }

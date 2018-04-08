@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Course {
 
@@ -23,10 +24,14 @@ public class Course {
 
     }
 
-    public Course(List<RawData> courseRawData) {
-        subject = courseRawData.get(0).getSubject();
+    public Course(List<RawData> courseRawData, long courseId) {
+
+        AtomicLong nextId = new AtomicLong();
+
+        this.courseId = courseId;
         catalogNumber = courseRawData.get(0).getCatalogNumber();
 
+        subject = courseRawData.get(0).getSubject();
 
         // sort courseRawData by semester and location.
         Collections.sort(courseRawData, new RawDataSortBySection());
@@ -44,13 +49,13 @@ public class Course {
                 sectionRawData.add(currentRawData);
             } else {
 
-                sections.add(new Section(sectionRawData));
+                sections.add(new Section(sectionRawData, nextId.incrementAndGet()));
 
                 sectionRawData.clear();
                 sectionRawData.add(currentRawData);
             }
         }
-        sections.add(new Section(sectionRawData));
+        sections.add(new Section(sectionRawData, nextId.incrementAndGet()));
     }
 
     public void printInModeDumpFormat() {

@@ -28,9 +28,29 @@ public class Section {
 
     }
 
-    public Section(List<RawData> sectionRawData) {
-        semesterCode = sectionRawData.get(0).getSemester();
+    public Section(List<RawData> sectionRawData, long sectionId) {
+
+        this.sectionId = sectionId;
         location = sectionRawData.get(0).getLocation();
+        semesterCode = sectionRawData.get(0).getSemester();
+
+        year = 1900 + semesterCode / 100;
+
+        switch (semesterCode % 10) {
+            case 1:
+                term = "Spring";
+                break;
+            case 4:
+                term = "Summer";
+                break;
+            case 7:
+                term = "Fall";
+                break;
+            default:
+                term = "Invalid input";
+                System.out.println("Error, semester code " + semesterCode + " is invalid.");
+                break;
+        }
 
         // get all instructors.
         Collections.sort(sectionRawData, new RawDataSortByInstructor());

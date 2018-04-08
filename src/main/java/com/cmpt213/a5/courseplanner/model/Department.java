@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Department {
 
@@ -25,9 +26,12 @@ public class Department {
 
     }
 
-    public Department(List<RawData> departmentRawData) {
-        subject = departmentRawData.get(0).getSubject();
+    public Department(List<RawData> departmentRawData, long departmentId) {
 
+        AtomicLong nextId = new AtomicLong();
+
+        this.departmentId = departmentId;
+        subject = departmentRawData.get(0).getSubject();
 
         Collections.sort(departmentRawData, new RawDataSortByCatalogNumber());
 
@@ -44,13 +48,13 @@ public class Department {
                 courseRawData.add(currentRawData);
             } else {
 
-                courses.add(new Course(courseRawData));
+                courses.add(new Course(courseRawData, nextId.incrementAndGet()));
 
                 courseRawData.clear();
                 courseRawData.add(currentRawData);
             }
         }
-        courses.add(new Course(courseRawData));
+        courses.add(new Course(courseRawData, nextId.incrementAndGet()));
 
     }
 
