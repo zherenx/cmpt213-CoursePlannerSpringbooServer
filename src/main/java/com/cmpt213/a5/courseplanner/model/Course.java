@@ -72,4 +72,14 @@ public class Course {
     public List<Offering> getOfferings() {
         return offerings;
     }
+
+    public List<Component> getComponentsOfOffering(long offeringId) {
+        for (Offering offering: offerings) {
+            if (offering.getCourseOfferingId() == offeringId) {
+                return offering.getComponents();
+            }
+        }
+        // TODO: throw offering not found exception.
+        return null;
+    }
 }

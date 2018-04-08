@@ -73,10 +73,20 @@ public class Department {
         return courses;
     }
 
-    public List<Offering> getAllOfferingsOfCourse(long courseId) {
+    public List<Offering> getOfferingsOfCourse(long courseId) {
         for (Course course: courses) {
             if (course.getCourseId() == courseId) {
                 return course.getOfferings();
+            }
+        }
+        // TODO: throw course not found exception.
+        return null;
+    }
+
+    public List<Component> getComponentsOfOffering(long courseId, long offeringId) {
+        for (Course course: courses) {
+            if (course.getCourseId() == courseId) {
+                return course.getComponentsOfOffering(offeringId);
             }
         }
         // TODO: throw course not found exception.

@@ -30,15 +30,19 @@ public class DataManager {
         data.printInModelDumpFormat();
     }
 
-    public List<Department> getAllDepartments() {
+    public List<Department> getDepartments() {
         return data.getDepartments();
     }
 
-    public List<Course> getAllCoursesOfDepartment(long departmentId) {
-        return data.getAllCoursesOfDepartment(departmentId);
+    public List<Course> getCoursesOfDepartment(long departmentId) {
+        return data.getCoursesOfDepartment(departmentId);
     }
 
-    public List<Offering> getAllOfferingsOfCourse(long departmentId, long courseId) {
-        return data.getAllOfferingsOfCourse(departmentId, courseId);
+    public List<Offering> getOfferingsOfCourse(long departmentId, long courseId) {
+        return data.getOfferingsOfCourse(departmentId, courseId);
+    }
+
+    public List<Component> getComponentsOfOffering(long departmentId, long courseId, long offeringId) {
+        return data.getComponentsOfOffering(departmentId, courseId, offeringId);
     }
 }

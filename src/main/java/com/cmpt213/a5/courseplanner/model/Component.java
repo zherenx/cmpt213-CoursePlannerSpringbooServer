@@ -1,11 +1,17 @@
 package com.cmpt213.a5.courseplanner.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Component {
 
+    @JsonProperty("type")
     private String componentCode;
+
+    @JsonProperty("enrollmentCap")
     private int enrollmentCapacity;
+
     private int enrollmentTotal;
 
     public Component() {

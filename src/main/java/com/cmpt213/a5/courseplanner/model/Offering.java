@@ -98,4 +98,13 @@ public class Offering {
             component.printInModeDumpFormat();
         }
     }
+
+
+    public long getCourseOfferingId() {
+        return courseOfferingId;
+    }
+
+    public List<Component> getComponents() {
+        return components;
+    }
 }

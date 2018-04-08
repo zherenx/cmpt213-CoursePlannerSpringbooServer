@@ -40,21 +40,27 @@ public class CoursePlannerController {
     }
 
     @GetMapping("/departments")
-    public List<Department> getAllDepartments() {
-        return dataManager.getAllDepartments();
+    public List<Department> getDepartments() {
+        return dataManager.getDepartments();
     }
 
     @GetMapping("/departments/{id}/courses")
-    public List<Course> getAllCoursesOfDepartment(@PathVariable("id") long departmentId) {
-        return dataManager.getAllCoursesOfDepartment(departmentId);
+    public List<Course> getCoursesOfDepartment(@PathVariable("id") long departmentId) {
+        return dataManager.getCoursesOfDepartment(departmentId);
     }
 
     @GetMapping("/departments/{deptId}/courses/{courseId}/offerings")
-    public List<Offering> getAllSectionsOfCourse(@PathVariable("deptId") long departmentId, @PathVariable("courseId") long courseId) {
-        return dataManager.getAllOfferingsOfCourse(departmentId, courseId);
+    public List<Offering> getSectionsOfCourse(@PathVariable("deptId") long departmentId, @PathVariable("courseId") long courseId) {
+        return dataManager.getOfferingsOfCourse(departmentId, courseId);
     }
 
-//    @GetMapping("/departments/{deptId}/courses/{courseId}/offerings/{offeringId}")
+    @GetMapping("/departments/{deptId}/courses/{courseId}/offerings/{offeringId}")
+    public List<Component> getComponentOfOffering(
+            @PathVariable("deptId") long departmentId,
+            @PathVariable("courseId") long courseId,
+            @PathVariable("offeringId") long offeringId) {
+        return dataManager.getComponentsOfOffering(departmentId, courseId, offeringId);
+    }
 
 
 }
