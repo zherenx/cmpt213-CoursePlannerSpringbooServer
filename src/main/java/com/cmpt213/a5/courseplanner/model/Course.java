@@ -13,7 +13,6 @@ public class Course {
 
     private String catalogNumber;
 
-
     @JsonIgnore
     private String subject;
 
@@ -58,15 +57,31 @@ public class Course {
         offerings.add(new Offering(OfferingRawData, nextId.incrementAndGet()));
     }
 
+
+    // getters and setters for json fields.
+    public long getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(long courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getCatalogNumber() {
+        return catalogNumber;
+    }
+
+    public void setCatalogNumber(String catalogNumber) {
+        this.catalogNumber = catalogNumber;
+    }
+
+
+
     public void printInModeDumpFormat() {
         System.out.println(subject + " " + catalogNumber);
         for (Offering offering : offerings) {
             offering.printInModeDumpFormat();
         }
-    }
-
-    public long getCourseId() {
-        return courseId;
     }
 
     public List<Offering> getOfferings() {

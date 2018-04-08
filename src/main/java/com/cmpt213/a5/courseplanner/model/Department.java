@@ -59,14 +59,29 @@ public class Department {
     }
 
 
+    // getters and setters for json fields.
+    public long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(long departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+
+
     public void printInModeDumpFormat() {
         for (Course course: courses) {
             course.printInModeDumpFormat();
         }
-    }
-
-    public long getDepartmentId() {
-        return departmentId;
     }
 
     public List<Course> getCourses() {

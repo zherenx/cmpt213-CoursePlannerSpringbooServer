@@ -14,12 +14,12 @@ public class CoursePlannerController {
 
 //    private Data data;
 
-    @GetMapping("api/about")
+    @GetMapping("/api/about")
     public String getDescription() {
         return "Course planner written by Zheren (Justin) Xiao!";
     }
 
-    @GetMapping("api/dump-model")
+    @GetMapping("/api/dump-model")
     public void processToModelDumpFormat() {
 
 ////        String pathname = "./";
@@ -39,22 +39,22 @@ public class CoursePlannerController {
 
     }
 
-    @GetMapping("/departments")
+    @GetMapping("/api/departments")
     public List<Department> getDepartments() {
         return dataManager.getDepartments();
     }
 
-    @GetMapping("/departments/{id}/courses")
+    @GetMapping("/api/departments/{id}/courses")
     public List<Course> getCoursesOfDepartment(@PathVariable("id") long departmentId) {
         return dataManager.getCoursesOfDepartment(departmentId);
     }
 
-    @GetMapping("/departments/{deptId}/courses/{courseId}/offerings")
+    @GetMapping("/api/departments/{deptId}/courses/{courseId}/offerings")
     public List<Offering> getSectionsOfCourse(@PathVariable("deptId") long departmentId, @PathVariable("courseId") long courseId) {
         return dataManager.getOfferingsOfCourse(departmentId, courseId);
     }
 
-    @GetMapping("/departments/{deptId}/courses/{courseId}/offerings/{offeringId}")
+    @GetMapping("/api/departments/{deptId}/courses/{courseId}/offerings/{offeringId}")
     public List<Component> getComponentOfOffering(
             @PathVariable("deptId") long departmentId,
             @PathVariable("courseId") long courseId,

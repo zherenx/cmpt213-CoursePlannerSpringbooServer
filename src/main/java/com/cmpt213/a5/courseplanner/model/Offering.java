@@ -32,7 +32,7 @@ public class Offering {
         location = offeringRawData.get(0).getLocation();
         semesterCode = offeringRawData.get(0).getSemester();
 
-        year = 1900 + semesterCode / 100;
+        year = 1900 + semesterCode / 10;
 
         switch (semesterCode % 10) {
             case 1:
@@ -86,6 +86,57 @@ public class Offering {
     }
 
 
+    // getters and setters for json fields.
+    public long getCourseOfferingId() {
+        return courseOfferingId;
+    }
+
+    public void setCourseOfferingId(long courseOfferingId) {
+        this.courseOfferingId = courseOfferingId;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public List<String> getInstructors() {
+        return instructors;
+    }
+
+    public void setInstructors(List<String> instructors) {
+        this.instructors = instructors;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getSemesterCode() {
+        return semesterCode;
+    }
+
+    public void setSemesterCode(int semesterCode) {
+        this.semesterCode = semesterCode;
+    }
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+
+
+
     public void printInModeDumpFormat() {
         System.out.print("\t" + semesterCode + " in " + location + " by " + instructors.get(0));
         for (int i = 1; i < instructors.size(); i++) {
@@ -96,11 +147,6 @@ public class Offering {
         for (Component component: components) {
             component.printInModeDumpFormat();
         }
-    }
-
-
-    public long getCourseOfferingId() {
-        return courseOfferingId;
     }
 
     public List<Component> getComponents() {

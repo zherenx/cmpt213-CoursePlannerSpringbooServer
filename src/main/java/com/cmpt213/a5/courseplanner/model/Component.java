@@ -29,6 +29,33 @@ public class Component {
         }
     }
 
+
+    // getters and setters for json fields.
+    public String getComponentCode() {
+        return componentCode;
+    }
+
+    public void setComponentCode(String componentCode) {
+        this.componentCode = componentCode;
+    }
+
+    public int getEnrollmentCapacity() {
+        return enrollmentCapacity;
+    }
+
+    public void setEnrollmentCapacity(int enrollmentCapacity) {
+        this.enrollmentCapacity = enrollmentCapacity;
+    }
+
+    public int getEnrollmentTotal() {
+        return enrollmentTotal;
+    }
+
+    public void setEnrollmentTotal(int enrollmentTotal) {
+        this.enrollmentTotal = enrollmentTotal;
+    }
+
+
     public void printInModeDumpFormat() {
         System.out.println("\t\tType=" + componentCode + ", Enrollment=" + enrollmentTotal + "/" + enrollmentCapacity);
     }
