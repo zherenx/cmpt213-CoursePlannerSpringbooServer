@@ -1,16 +1,27 @@
 package com.cmpt213.a5.courseplanner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Section {
 
-    private int semester;
+    @JsonProperty("courseOfferingId")
+    private long sectionId;
+
     private String location;
+
     private List<String> instructors = new ArrayList<>();
 
+    private int year;
+    private int semesterCode;
+    private String term;
+
+
+    @JsonIgnore
     private List<Component> components = new ArrayList<>();
 
     public Section() {
@@ -18,7 +29,7 @@ public class Section {
     }
 
     public Section(List<RawData> sectionRawData) {
-        semester = sectionRawData.get(0).getSemester();
+        semesterCode = sectionRawData.get(0).getSemester();
         location = sectionRawData.get(0).getLocation();
 
         // get all instructors.
@@ -58,7 +69,7 @@ public class Section {
 
 
     public void printInModeDumpFormat() {
-        System.out.print("\t" + semester + " in " + location + " by " + instructors.get(0));
+        System.out.print("\t" + semesterCode + " in " + location + " by " + instructors.get(0));
         for (int i = 1; i < instructors.size(); i++) {
             System.out.print(", " + instructors.get(i));
         }

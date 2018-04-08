@@ -1,6 +1,7 @@
 package com.cmpt213.a5.courseplanner.model;
 
 import java.io.File;
+import java.util.List;
 
 public class DataManager {
     private static DataManager instance = new DataManager();
@@ -27,5 +28,13 @@ public class DataManager {
 
     public void printInModelDumpFormat() {
         data.printInModelDumpFormat();
+    }
+
+    public List<Department> getAllDepartments() {
+        return data.getDepartments();
+    }
+
+    public List<Course> getAllCoursesOfDepartment(long departmentId) {
+        return data.getAllCoursesOfDepartment(departmentId);
     }
 }

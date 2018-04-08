@@ -1,13 +1,23 @@
 package com.cmpt213.a5.courseplanner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Department {
 
+    @JsonProperty("deptId")
+    private long departmentId;
+
+    @JsonProperty("name")
     private String subject;
 
+
+
+    @JsonIgnore
     private List<Course> courses = new ArrayList<>();
 
 
@@ -49,5 +59,13 @@ public class Department {
         for (Course course: courses) {
             course.printInModeDumpFormat();
         }
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public long getDepartmentId() {
+        return departmentId;
     }
 }

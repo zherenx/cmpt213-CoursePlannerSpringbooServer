@@ -42,22 +42,13 @@ public class CoursePlannerController {
 
     @GetMapping("/departments")
     public List<Department> getAllDepartments() {
-
-        String pathname = "./data/course_data_2018.csv";
-
-        File csvFile = new File(pathname);
-
-        Data data;
-
-        data = DataProcessor.processCourseDataFile(csvFile);
-
-        return data.getDepartments();
+        return dataManager.getAllDepartments();
     }
 
-//    @GetMapping("/departments/{id}/courses")
-//    public List<Course> getAllCoursesOfDepartment(@PathVariable("id") long departmentId) {
-//
-//    }
+    @GetMapping("/departments/{id}/courses")
+    public List<Course> getAllCoursesOfDepartment(@PathVariable("id") long departmentId) {
+        return dataManager.getAllCoursesOfDepartment(departmentId);
+    }
 
 
 }

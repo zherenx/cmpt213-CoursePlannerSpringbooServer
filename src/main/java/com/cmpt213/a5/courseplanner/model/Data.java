@@ -6,16 +6,7 @@ import java.util.List;
 
 public class Data {
 
-//    private static Data dataInstance;
-
     private List<Department> departments = new ArrayList<>();
-
-//    public static Data getInstance() {
-//        if (dataInstance == null) {
-//            dataInstance = new Data();
-//        }
-//        return dataInstance;
-//    }
 
     public Data() {
 
@@ -63,5 +54,16 @@ public class Data {
 
     public List<Department> getDepartments() {
         return departments;
+    }
+
+    public List<Course> getAllCoursesOfDepartment(long departmentId) {
+        for (Department department: departments) {
+            if (department.getDepartmentId() == departmentId) {
+                return department.getCourses();
+            }
+        }
+
+        // TODO: throw exception.
+        return null;
     }
 }

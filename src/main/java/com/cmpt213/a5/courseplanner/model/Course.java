@@ -1,14 +1,22 @@
 package com.cmpt213.a5.courseplanner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Course {
 
-    private String subject;
+    private long courseId;
+
     private String catalogNumber;
 
+
+    @JsonIgnore
+    private String subject;
+
+    @JsonIgnore
     private List<Section> sections = new ArrayList<>();
 
     public Course() {
