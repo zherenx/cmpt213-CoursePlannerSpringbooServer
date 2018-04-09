@@ -17,8 +17,6 @@ public class CoursePlannerController {
 
     private WatcherManager watcherManager = WatcherManager.getInstance();
 
-//    private Data data;
-
     @GetMapping("/api/about")
     public Object getDescription() {
         return new Object() {
@@ -29,22 +27,7 @@ public class CoursePlannerController {
 
     @GetMapping("/api/dump-model")
     public void processToModelDumpFormat() {
-
-////        String pathname = "./";
-////        String pathname = "./data/test_data.csv";
-////        String pathname = "./data/course_data_2016.csv";
-//        String pathname = "./data/course_data_2018.csv";
-//
-//        File csvFile = new File(pathname);
-//
-////        Data data;
-//
-//        data = DataProcessor.processCourseDataFile(csvFile);
-//
-//        data.printInModelDumpFormat();
-
         dataManager.printInModelDumpFormat();
-
     }
 
     @GetMapping("/api/departments")
@@ -81,6 +64,7 @@ public class CoursePlannerController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addOffering(@RequestBody RawData newRawData) {
         dataManager.addOffering(newRawData);
+        watcherManager.processNewEvent(newRawData);
     }
 
     @GetMapping("/api/watchers")
@@ -94,6 +78,17 @@ public class CoursePlannerController {
         String subject = dataManager.getSubjectById(watcherRequestBody.deptId);
         String catalogNumber = dataManager.getCatalogNumberOfCourse(watcherRequestBody.deptId, watcherRequestBody.courseId);
         watcherManager.addNewWatcher(watcherRequestBody.deptId, subject, watcherRequestBody.courseId, catalogNumber);
+    }
+
+    @GetMapping("/api/watchers/{id}")
+    public List<String> getEventsByWatcherId(@PathVariable("id") long watcherId) {
+        return watcherManager.getEventsByWatcherId(watcherId);
+    }
+
+    @DeleteMapping("/api/watchers/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteWatcherById(@PathVariable("id") long watcherId) {
+        watcherManager.deleteWatcherById(watcherId);
     }
 
 }

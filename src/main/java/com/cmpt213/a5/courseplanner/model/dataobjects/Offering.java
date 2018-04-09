@@ -49,7 +49,7 @@ public class Offering implements Comparable<Offering> {
                 term = "Fall";
                 break;
             default:
-                term = "Invalid input";
+                term = "Invalid";
                 System.out.println("Error, semester code " + semesterCode + " is invalid.");
                 break;
         }
