@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Course {
+public class Course implements Comparable<Course> {
 
     private long courseId;
 
@@ -21,13 +21,14 @@ public class Course {
     @JsonIgnore
     private List<Offering> offerings = new ArrayList<>();
 
+    @JsonIgnore
+    private AtomicLong nextId = new AtomicLong();
+
     public Course() {
 
     }
 
     public Course(List<RawData> courseRawData, long courseId) {
-
-        AtomicLong nextId = new AtomicLong();
 
         this.courseId = courseId;
         catalogNumber = courseRawData.get(0).getCatalogNumber();
@@ -97,5 +98,27 @@ public class Course {
             }
         }
         throw new OfferingNotFoundException("Course offering of ID " + offeringId + " not found.");
+    }
+
+    public void addOffering(RawData newRawData) {
+        boolean isNewOffering = true;
+        for (Offering offering: offerings) {
+            if (newRawData.getSemester() == offering.getSemesterCode()
+                    && newRawData.getLocation().equals(offering.getLocation())) {
+                offering.updateOffering(newRawData);
+                isNewOffering = false;
+            }
+        }
+        if (isNewOffering) {
+            List<RawData> newRawDataList = new ArrayList<>();
+            newRawDataList.add(newRawData);
+            offerings.add(new Offering(newRawDataList, nextId.incrementAndGet()));
+            Collections.sort(offerings);
+        }
+    }
+
+    @Override
+    public int compareTo(Course o) {
+        return catalogNumber.compareTo(o.catalogNumber);
     }
 }

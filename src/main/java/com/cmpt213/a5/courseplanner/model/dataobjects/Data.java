@@ -12,6 +12,8 @@ public class Data {
 
     private List<Department> departments = new ArrayList<>();
 
+    private AtomicLong nextId = new AtomicLong();
+
     public Data() {
 
     }
@@ -88,5 +90,30 @@ public class Data {
             }
         }
         throw new DepartmentNotFoundException("Department of ID " + departmentId + " not found.");
+    }
+
+    public List<GraphData> getGraphDataOfDepartment(long departmentId) {
+        for (Department department: departments) {
+            if (department.getDepartmentId() == departmentId) {
+                return department.getGraphData();
+            }
+        }
+        throw new DepartmentNotFoundException("Department of ID " + departmentId + " not found.");
+    }
+
+    public void addOffering(RawData newRawData) {
+        boolean isNewDepartment = true;
+        for (Department department: departments) {
+            if (newRawData.getSubject().equals(department.getSubject())) {
+                department.addOffering(newRawData);
+                isNewDepartment = false;
+            }
+        }
+        if (isNewDepartment) {
+            List<RawData> newRawDataList = new ArrayList<>();
+            newRawDataList.add(newRawData);
+            departments.add(new Department(newRawDataList, nextId.incrementAndGet()));
+            Collections.sort(departments);
+        }
     }
 }

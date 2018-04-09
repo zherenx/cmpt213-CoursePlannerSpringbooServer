@@ -3,9 +3,10 @@ package com.cmpt213.a5.courseplanner.model.dataobjects;
 import com.cmpt213.a5.courseplanner.model.RawData;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Component {
+public class Component implements Comparable<Component> {
 
     @JsonProperty("type")
     private String componentCode;
@@ -59,5 +60,15 @@ public class Component {
 
     public void printInModeDumpFormat() {
         System.out.println("\t\tType=" + componentCode + ", Enrollment=" + enrollmentTotal + "/" + enrollmentCapacity);
+    }
+
+    public void updateComponent(RawData newRawData) {
+        enrollmentCapacity += newRawData.getEnrollmentCapacity();
+        enrollmentTotal += newRawData.getEnrollmentTotal();
+    }
+
+    @Override
+    public int compareTo(Component o) {
+        return componentCode.compareTo(o.getComponentCode());
     }
 }

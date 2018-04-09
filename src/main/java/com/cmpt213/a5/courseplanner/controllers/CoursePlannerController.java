@@ -1,13 +1,9 @@
 package com.cmpt213.a5.courseplanner.controllers;
 
 import com.cmpt213.a5.courseplanner.model.*;
-import com.cmpt213.a5.courseplanner.model.dataobjects.Component;
-import com.cmpt213.a5.courseplanner.model.dataobjects.Course;
-import com.cmpt213.a5.courseplanner.model.dataobjects.Department;
-import com.cmpt213.a5.courseplanner.model.dataobjects.Offering;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.cmpt213.a5.courseplanner.model.dataobjects.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -72,6 +68,14 @@ public class CoursePlannerController {
     }
 
 //    @GetMapping("/api/stats/students-per-semester")
-//    public
+//    public List<GraphData> getGraphDataOfDepartment(@RequestParam(value = "deptId") long departmentId) {
+//        return dataManager.getGraphDataOfDepartment(departmentId);
+//    }
+
+    @PostMapping("/api/addoffering")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addOffering(@RequestBody RawData newRawData) {
+        dataManager.addOffering(newRawData);
+    }
 
 }

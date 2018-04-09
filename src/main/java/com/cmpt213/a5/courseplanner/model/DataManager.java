@@ -47,4 +47,12 @@ public class DataManager {
     public List<Component> getComponentsOfOffering(long departmentId, long courseId, long offeringId) {
         return data.getComponentsOfOffering(departmentId, courseId, offeringId);
     }
+
+    public List<GraphData> getGraphDataOfDepartment(long departmentId) {
+        return data.getGraphDataOfDepartment(departmentId);
+    }
+
+    public void addOffering(RawData newRawData) {
+        data.addOffering(newRawData);
+    }
 }

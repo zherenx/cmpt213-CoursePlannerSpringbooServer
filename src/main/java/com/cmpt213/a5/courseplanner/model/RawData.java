@@ -1,17 +1,34 @@
 package com.cmpt213.a5.courseplanner.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class RawData {
 
+    @JsonIgnore
     private final int NUMBER_OF_COLUMNS = 8;
 
     private int semester;
+
+    @JsonProperty("subjectName")
     private String subject;
+
     private String catalogNumber;
     private String location;
+
+    @JsonProperty("enrollmentCap")
     private int enrollmentCapacity;
+
     private int enrollmentTotal;
     private String instructor;
+
+    @JsonProperty("component")
     private String componentCode;
+
+
+    public RawData() {
+
+    }
 
     public RawData(String[] args) {
         if (args.length != NUMBER_OF_COLUMNS) {
@@ -66,7 +83,9 @@ public class RawData {
         return componentCode.equals(other.componentCode);
     }
 
-
+    public boolean isSameSemester(RawData other) {
+        return semester == other.getSemester();
+    }
 
 
 
@@ -134,6 +153,7 @@ public class RawData {
     public void setComponentCode(String componentCode) {
         this.componentCode = componentCode;
     }
+
 
 
 }

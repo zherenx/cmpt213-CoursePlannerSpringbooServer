@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Offering {
+public class Offering implements Comparable<Offering> {
 
     private long courseOfferingId;
 
     private String location;
 
+    // TODO: probably need a instructors string here.
     private List<String> instructors = new ArrayList<>();
 
     private int year;
@@ -154,5 +155,47 @@ public class Offering {
 
     public List<Component> getComponents() {
         return components;
+    }
+
+    public void updateOffering(RawData newRawData) {
+
+        // update instructors list.
+        boolean isNewInstructor = true;
+        for (String instructor: instructors) {
+            if (newRawData.getInstructor().equals(instructor)) {
+                isNewInstructor = false;
+                break;
+            }
+        }
+        if (isNewInstructor) {
+            instructors.add(newRawData.getInstructor());
+            Collections.sort(instructors);
+        }
+
+
+        boolean isNewComponent = true;
+        for (Component component: components) {
+            if (newRawData.getComponentCode().equals(component.getComponentCode())) {
+                component.updateComponent(newRawData);
+                isNewComponent = false;
+            }
+        }
+        if (isNewComponent) {
+            List<RawData> newRawDataList = new ArrayList<>();
+            newRawDataList.add(newRawData);
+            components.add(new Component(newRawDataList));
+            Collections.sort(components);
+        }
+    }
+
+    @Override
+    public int compareTo(Offering o) {
+        if (semesterCode < o.getSemesterCode()) {
+            return -1;
+        } else if (semesterCode == o.getSemesterCode()) {
+            return location.compareTo(o.getLocation());
+        } else {
+            return 1;
+        }
     }
 }
