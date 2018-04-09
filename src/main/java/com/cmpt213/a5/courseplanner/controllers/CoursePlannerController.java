@@ -1,6 +1,10 @@
 package com.cmpt213.a5.courseplanner.controllers;
 
 import com.cmpt213.a5.courseplanner.model.*;
+import com.cmpt213.a5.courseplanner.model.dataobjects.Component;
+import com.cmpt213.a5.courseplanner.model.dataobjects.Course;
+import com.cmpt213.a5.courseplanner.model.dataobjects.Department;
+import com.cmpt213.a5.courseplanner.model.dataobjects.Offering;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +19,11 @@ public class CoursePlannerController {
 //    private Data data;
 
     @GetMapping("/api/about")
-    public String getDescription() {
-        return "Course planner written by Zheren (Justin) Xiao!";
+    public Object getDescription() {
+        return new Object() {
+            public String appName = "Course Planner";
+            public String authorName = "Zheren (Justin) Xiao";
+        };
     }
 
     @GetMapping("/api/dump-model")
@@ -50,7 +57,9 @@ public class CoursePlannerController {
     }
 
     @GetMapping("/api/departments/{deptId}/courses/{courseId}/offerings")
-    public List<Offering> getSectionsOfCourse(@PathVariable("deptId") long departmentId, @PathVariable("courseId") long courseId) {
+    public List<Offering> getSectionsOfCourse(
+            @PathVariable("deptId") long departmentId,
+            @PathVariable("courseId") long courseId) {
         return dataManager.getOfferingsOfCourse(departmentId, courseId);
     }
 
@@ -62,5 +71,7 @@ public class CoursePlannerController {
         return dataManager.getComponentsOfOffering(departmentId, courseId, offeringId);
     }
 
+//    @GetMapping("/api/stats/students-per-semester")
+//    public
 
 }

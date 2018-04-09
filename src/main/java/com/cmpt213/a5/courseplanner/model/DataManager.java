@@ -1,5 +1,7 @@
 package com.cmpt213.a5.courseplanner.model;
 
+import com.cmpt213.a5.courseplanner.model.dataobjects.*;
+
 import java.io.File;
 import java.util.List;
 

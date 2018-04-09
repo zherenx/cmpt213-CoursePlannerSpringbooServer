@@ -1,5 +1,7 @@
 package com.cmpt213.a5.courseplanner.model;
 
+import com.cmpt213.a5.courseplanner.model.dataobjects.Data;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
