@@ -180,6 +180,15 @@ public class Department implements Comparable<Department> {
         // TODO: update graph data.
     }
 
+    public String getCatalogNumberById(long courseId) {
+        for (Course course: courses) {
+            if (course.getCourseId() == courseId) {
+                return course.getCatalogNumber();
+            }
+        }
+        throw new CourseNotFoundException("Course of ID " + courseId + " not found.");
+    }
+
     @Override
     public int compareTo(Department o) {
         return subject.compareTo(o.getSubject());

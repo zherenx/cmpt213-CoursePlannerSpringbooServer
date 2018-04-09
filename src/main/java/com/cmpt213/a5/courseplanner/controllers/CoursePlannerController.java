@@ -2,6 +2,9 @@ package com.cmpt213.a5.courseplanner.controllers;
 
 import com.cmpt213.a5.courseplanner.model.*;
 import com.cmpt213.a5.courseplanner.model.dataobjects.*;
+import com.cmpt213.a5.courseplanner.model.managers.DataManager;
+import com.cmpt213.a5.courseplanner.model.managers.WatcherManager;
+import com.cmpt213.a5.courseplanner.model.watcherobjects.Watcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +14,8 @@ import java.util.List;
 public class CoursePlannerController {
 
     private DataManager dataManager = DataManager.getInstance();
+
+    private WatcherManager watcherManager = WatcherManager.getInstance();
 
 //    private Data data;
 
@@ -76,6 +81,19 @@ public class CoursePlannerController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addOffering(@RequestBody RawData newRawData) {
         dataManager.addOffering(newRawData);
+    }
+
+    @GetMapping("/api/watchers")
+    public List<Watcher> getWatchers() {
+        return watcherManager.getWatchers();
+    }
+
+    @PostMapping("/api/watchers")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addNewWatcher(@RequestBody WatcherRequestBody watcherRequestBody) {
+        String subject = dataManager.getSubjectById(watcherRequestBody.deptId);
+        String catalogNumber = dataManager.getCatalogNumberOfCourse(watcherRequestBody.deptId, watcherRequestBody.courseId);
+        watcherManager.addNewWatcher(watcherRequestBody.deptId, subject, watcherRequestBody.courseId, catalogNumber);
     }
 
 }

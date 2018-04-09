@@ -116,4 +116,22 @@ public class Data {
             Collections.sort(departments);
         }
     }
+
+    public String getSubjectById(long departmentId) {
+        for (Department department: departments) {
+            if (department.getDepartmentId() == departmentId) {
+                return department.getSubject();
+            }
+        }
+        throw new DepartmentNotFoundException("Department of ID " + departmentId + " not found.");
+    }
+
+    public String getCatalogNumberOfCourse(long departmentId, long courseId) {
+        for (Department department: departments) {
+            if (department.getDepartmentId() == departmentId) {
+                return department.getCatalogNumberById(courseId);
+            }
+        }
+        throw new DepartmentNotFoundException("Department of ID " + departmentId + " not found.");
+    }
 }

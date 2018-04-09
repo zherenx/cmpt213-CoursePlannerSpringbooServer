@@ -1,5 +1,7 @@
-package com.cmpt213.a5.courseplanner.model;
+package com.cmpt213.a5.courseplanner.model.managers;
 
+import com.cmpt213.a5.courseplanner.model.DataProcessor;
+import com.cmpt213.a5.courseplanner.model.RawData;
 import com.cmpt213.a5.courseplanner.model.dataobjects.*;
 
 import java.io.File;
@@ -11,9 +13,6 @@ public class DataManager {
     private Data data;
 
     public static DataManager getInstance() {
-//        if (instance == null) {
-//            instance = new DataManager();
-//        }
         return instance;
     }
 
@@ -54,5 +53,13 @@ public class DataManager {
 
     public void addOffering(RawData newRawData) {
         data.addOffering(newRawData);
+    }
+
+    public String getSubjectById(long deptId) {
+        return data.getSubjectById(deptId);
+    }
+
+    public String getCatalogNumberOfCourse(long deptId, long courseId) {
+        return data.getCatalogNumberOfCourse(deptId, courseId);
     }
 }
