@@ -62,9 +62,15 @@ public class CoursePlannerController {
 
     @PostMapping("/api/addoffering")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addOffering(@RequestBody RawData newRawData) {
+    public Component addOffering(@RequestBody RawData newRawData) {
         dataManager.addOffering(newRawData);
         watcherManager.processNewEvent(newRawData);
+        return dataManager.getCourseComponentByDetails(
+                newRawData.getSubject(),
+                newRawData.getCatalogNumber(),
+                newRawData.getSemester(),
+                newRawData.getLocation(),
+                newRawData.getComponentCode());
     }
 
     @GetMapping("/api/watchers")

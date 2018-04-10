@@ -117,6 +117,15 @@ public class Course implements Comparable<Course> {
         }
     }
 
+    public Component getCourseComponentByDetails(int semester, String location, String componentCode) {
+        for (Offering offering: offerings) {
+            if (offering.getSemesterCode() == semester && offering.getLocation().equals(location)) {
+                return offering.getCourseComponentByDetails(componentCode);
+            }
+        }
+        throw new OfferingNotFoundException("Course offering in semester " + semester + " not found.");
+    }
+
     @Override
     public int compareTo(Course o) {
         return catalogNumber.compareTo(o.catalogNumber);

@@ -188,6 +188,15 @@ public class Offering implements Comparable<Offering> {
         }
     }
 
+    public Component getCourseComponentByDetails(String componentCode) {
+        for (Component component: components) {
+            if (component.getComponentCode().equals(componentCode)) {
+                return component;
+            }
+        }
+        throw new ComponentNotFoundException("Component " + componentCode + " not found.");
+    }
+
     @Override
     public int compareTo(Offering o) {
         if (semesterCode < o.getSemesterCode()) {

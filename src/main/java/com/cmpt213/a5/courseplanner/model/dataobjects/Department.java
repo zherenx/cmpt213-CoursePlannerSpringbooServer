@@ -190,6 +190,15 @@ public class Department implements Comparable<Department> {
         throw new CourseNotFoundException("Course of ID " + courseId + " not found.");
     }
 
+    public Component getCourseComponentByDetails(String catalogNumber, int semester, String location, String componentCode) {
+        for (Course course: courses) {
+            if (course.getCatalogNumber().equals(catalogNumber)) {
+                return course.getCourseComponentByDetails(semester, location, componentCode);
+            }
+        }
+        throw new CourseNotFoundException("Course " + subject + " " + catalogNumber + " not found.");
+    }
+
     @Override
     public int compareTo(Department o) {
         return subject.compareTo(o.getSubject());

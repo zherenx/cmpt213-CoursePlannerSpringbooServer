@@ -134,4 +134,13 @@ public class Data {
         }
         throw new DepartmentNotFoundException("Department of ID " + departmentId + " not found.");
     }
+
+    public Component getCourseComponentByDetails(String subject, String catalogNumber, int semester, String location, String componentCode) {
+        for (Department department: departments) {
+            if (department.getSubject().equals(subject)) {
+                return department.getCourseComponentByDetails(catalogNumber, semester, location, componentCode);
+            }
+        }
+        throw new DepartmentNotFoundException("Department " + subject + " not found.");
+    }
 }

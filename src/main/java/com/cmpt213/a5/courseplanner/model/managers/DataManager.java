@@ -62,4 +62,8 @@ public class DataManager {
     public String getCatalogNumberOfCourse(long deptId, long courseId) {
         return data.getCatalogNumberOfCourse(deptId, courseId);
     }
+
+    public Component getCourseComponentByDetails(String subject, String catalogNumber, int semester, String location, String componentCode) {
+        return data.getCourseComponentByDetails(subject, catalogNumber, semester, location, componentCode);
+    }
 }
