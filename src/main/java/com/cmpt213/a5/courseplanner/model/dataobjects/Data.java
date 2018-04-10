@@ -95,7 +95,7 @@ public class Data {
     public List<GraphData> getGraphDataOfDepartment(long departmentId) {
         for (Department department: departments) {
             if (department.getDepartmentId() == departmentId) {
-                return department.getGraphData();
+                return department.getGraphDataList();
             }
         }
         throw new DepartmentNotFoundException("Department of ID " + departmentId + " not found.");

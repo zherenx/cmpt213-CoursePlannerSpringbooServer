@@ -1,6 +1,6 @@
 package com.cmpt213.a5.courseplanner.model.dataobjects;
 
-public class GraphData {
+public class GraphData implements Comparable<GraphData> {
     private int semesterCode;
     private int totalCoursesTaken;
 
@@ -27,5 +27,10 @@ public class GraphData {
 
     public void incrementEnrollmentTotal(int enrollmentTotal) {
         totalCoursesTaken += enrollmentTotal;
+    }
+
+    @Override
+    public int compareTo(GraphData o) {
+        return semesterCode - o.getSemesterCode();
     }
 }

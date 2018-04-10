@@ -55,10 +55,10 @@ public class CoursePlannerController {
         return dataManager.getComponentsOfOffering(departmentId, courseId, offeringId);
     }
 
-//    @GetMapping("/api/stats/students-per-semester")
-//    public List<GraphData> getGraphDataOfDepartment(@RequestParam(value = "deptId") long departmentId) {
-//        return dataManager.getGraphDataOfDepartment(departmentId);
-//    }
+    @GetMapping("/api/stats/students-per-semester")
+    public List<GraphData> getGraphDataOfDepartment(@RequestParam(value = "deptId") long departmentId) {
+        return dataManager.getGraphDataOfDepartment(departmentId);
+    }
 
     @PostMapping("/api/addoffering")
     @ResponseStatus(HttpStatus.CREATED)

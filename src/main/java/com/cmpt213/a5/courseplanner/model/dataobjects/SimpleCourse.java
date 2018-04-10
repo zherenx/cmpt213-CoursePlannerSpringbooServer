@@ -1,5 +1,9 @@
 package com.cmpt213.a5.courseplanner.model.dataobjects;
 
+/**
+ * This class is a simple version of Course class;
+ * it includes information needed for watcher class.
+ */
 public class SimpleCourse {
     private long courseId;
     private String catalogNumber;

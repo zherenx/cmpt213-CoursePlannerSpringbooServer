@@ -25,7 +25,7 @@ public class Department implements Comparable<Department> {
     private List<Course> courses = new ArrayList<>();
 
     @JsonIgnore
-    private List<GraphData> graphData = new ArrayList<>();
+    private List<GraphData> graphDataList = new ArrayList<>();
 
     @JsonIgnore
     private AtomicLong nextId = new AtomicLong();
@@ -64,50 +64,23 @@ public class Department implements Comparable<Department> {
         courses.add(new Course(courseRawData, nextId.incrementAndGet()));
 
 
-//        // construct graph data.
-//        Collections.sort(departmentRawData, new RawDataSortBySemester());
-//
-//        GraphData graphDataOfOneSemester;
-//
-//        if (departmentRawData.get(0).getComponentCode().equals("LEC")) {
-//            graphDataOfOneSemester =
-//                    new GraphData(departmentRawData.get(0).getSemester(), departmentRawData.get(0).getEnrollmentTotal());
-//        } else {
-//            graphDataOfOneSemester =
-//                    new GraphData(departmentRawData.get(0).getSemester(), 0);
-//        }
-//
-//        for (int i = 1; i < departmentRawData.size(); i++) {
-//            RawData previousRawData = departmentRawData.get(i - 1);
-//            RawData currentRawData = departmentRawData.get(i);
-//
-//            if (currentRawData.isSameSemester(previousRawData)) {
-//                if (currentRawData.getComponentCode().equals("LEC")) {
-//                    graphDataOfOneSemester.incrementEnrollmentTotal(currentRawData.getEnrollmentTotal());
-//                }
-//            } else {
-//                graphData.add(graphDataOfOneSemester);
-//
-//                int gap = currentRawData.getSemester() - previousRawData.getSemester();
-//
-//                // one year gap == three semester gap.
-//                int yearGap = gap / 10;
-//                int semesterGap = gap % 10;
-//
-//                // number of semesters between previous and current semester (in included).
-//                int offset = yearGap * 3 + semesterGap / 3 - 1;
-//
-//                int previousTermCode = previousRawData.getSemester() % 10;
-//
-//                int semesterOffset = previousTermCode / 3;
-//
-//
-//                for (int counter = 0; counter < offset; counter++) {
-//
-//                }
-//
-//            }
-//        }
+        // construct graph data.
+        Collections.sort(departmentRawData, new RawDataSortBySemester());
+
+        RawData oldestData = departmentRawData.get(0);
+        RawData newestData = departmentRawData.get(departmentRawData.size() - 1);
+
+        graphDataList = getDummyGraphDataList(oldestData.getSemester(), newestData.getSemester());
+
+        for (RawData rawData: departmentRawData) {
+            if (rawData.getComponentCode().equals("LEC")) {
+                for (GraphData graphData: graphDataList) {
+                    if (rawData.getSemester() == graphData.getSemesterCode()) {
+                        graphData.incrementEnrollmentTotal(rawData.getEnrollmentTotal());
+                    }
+                }
+            }
+        }
 
     }
 
@@ -159,8 +132,8 @@ public class Department implements Comparable<Department> {
         throw new CourseNotFoundException("Course of ID " + courseId + " not found.");
     }
 
-    public List<GraphData> getGraphData() {
-        return graphData;
+    public List<GraphData> getGraphDataList() {
+        return graphDataList;
     }
 
     public void addOffering(RawData newRawData) {
@@ -177,7 +150,35 @@ public class Department implements Comparable<Department> {
             courses.add(new Course(newRawDataList, nextId.incrementAndGet()));
             Collections.sort(courses);
         }
-        // TODO: update graph data.
+
+        // update graphDataList.
+        if (newRawData.getSemester() < graphDataList.get(0).getSemesterCode()) {
+            List<GraphData> newGraphDataList = getDummyGraphDataList(
+                    newRawData.getSemester(),
+                    graphDataList.get(0).getSemesterCode());
+            newGraphDataList.remove(newGraphDataList.size() - 1);
+            if (newRawData.getComponentCode().equals("LEC")) {
+                newGraphDataList.get(0).incrementEnrollmentTotal(newRawData.getEnrollmentTotal());
+            }
+            graphDataList.addAll(newGraphDataList);
+            Collections.sort(graphDataList);
+        } else if (newRawData.getSemester() > graphDataList.get(graphDataList.size() - 1).getSemesterCode()) {
+            List<GraphData> newGraphDataList = getDummyGraphDataList(
+                            graphDataList.get(graphDataList.size() - 1).getSemesterCode(),
+                            newRawData.getSemester());
+            newGraphDataList.remove(0);
+            if (newRawData.getComponentCode().equals("LEC")) {
+                newGraphDataList.get(newGraphDataList.size() - 1).incrementEnrollmentTotal(newRawData.getEnrollmentTotal());
+            }
+            graphDataList.addAll(newGraphDataList);
+            Collections.sort(graphDataList);
+        } else {
+            for (GraphData graphData: graphDataList) {
+                if (newRawData.getSemester() == graphData.getSemesterCode()) {
+                    graphData.incrementEnrollmentTotal(newRawData.getEnrollmentTotal());
+                }
+            }
+        }
     }
 
     public String getCatalogNumberById(long courseId) {
@@ -192,5 +193,28 @@ public class Department implements Comparable<Department> {
     @Override
     public int compareTo(Department o) {
         return subject.compareTo(o.getSubject());
+    }
+
+    private List<GraphData> getDummyGraphDataList(int oldestSemester, int newestSemester) {
+        List<GraphData> newGraphDataList = new ArrayList<>();
+        int currentSemester = oldestSemester;
+        // semesterOffset indicates which term it is, 0 == Spring, 1 == Summer, 2 == Fall.
+        int semesterOffset = currentSemester % 10 / 3;
+        while(currentSemester <= newestSemester) {
+            newGraphDataList.add(new GraphData(currentSemester, 0));
+            switch (semesterOffset) {
+                case 0:
+                    currentSemester += 3;
+                    break;
+                case 1:
+                    currentSemester += 3;
+                    break;
+                case 2:
+                    currentSemester += 4;
+                    break;
+            }
+            semesterOffset = (semesterOffset + 1) % 3;
+        }
+        return newGraphDataList;
     }
 }
