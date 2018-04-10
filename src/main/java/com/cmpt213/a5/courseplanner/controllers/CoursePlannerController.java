@@ -3,6 +3,7 @@ package com.cmpt213.a5.courseplanner.controllers;
 import com.cmpt213.a5.courseplanner.model.*;
 import com.cmpt213.a5.courseplanner.model.dataobjects.*;
 import com.cmpt213.a5.courseplanner.model.managers.DataManager;
+import com.cmpt213.a5.courseplanner.model.managers.ResourceNotFoundException;
 import com.cmpt213.a5.courseplanner.model.managers.WatcherManager;
 import com.cmpt213.a5.courseplanner.model.watcherobjects.Watcher;
 import org.springframework.http.HttpStatus;
@@ -80,15 +81,19 @@ public class CoursePlannerController {
 
     @PostMapping("/api/watchers")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addNewWatcher(@RequestBody WatcherRequestBody watcherRequestBody) {
-        String subject = dataManager.getSubjectById(watcherRequestBody.deptId);
-        String catalogNumber = dataManager.getCatalogNumberOfCourse(watcherRequestBody.deptId, watcherRequestBody.courseId);
-        watcherManager.addNewWatcher(watcherRequestBody.deptId, subject, watcherRequestBody.courseId, catalogNumber);
+    public Watcher addNewWatcher(@RequestBody WatcherRequestBody watcherRequestBody) {
+        try {
+            String subject = dataManager.getSubjectById(watcherRequestBody.deptId);
+            String catalogNumber = dataManager.getCatalogNumberOfCourse(watcherRequestBody.deptId, watcherRequestBody.courseId);
+            return watcherManager.addNewWatcher(watcherRequestBody.deptId, subject, watcherRequestBody.courseId, catalogNumber);
+        } catch (DepartmentNotFoundException | CourseNotFoundException e) {
+            throw new ResourceNotFoundException("Unable to find requested watcher.");
+        }
     }
 
     @GetMapping("/api/watchers/{id}")
-    public List<String> getEventsByWatcherId(@PathVariable("id") long watcherId) {
-        return watcherManager.getEventsByWatcherId(watcherId);
+    public Watcher getWatcherId(@PathVariable("id") long watcherId) {
+        return watcherManager.getWatcherId(watcherId);
     }
 
     @DeleteMapping("/api/watchers/{id}")

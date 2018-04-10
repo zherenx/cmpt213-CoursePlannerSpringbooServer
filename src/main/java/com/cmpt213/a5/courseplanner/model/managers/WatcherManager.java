@@ -27,14 +27,16 @@ public class WatcherManager {
         return watchers;
     }
 
-    public void addNewWatcher(long deptId, String subject, long courseId, String catalogNumber) {
-        watchers.add(new Watcher(deptId, subject, courseId, catalogNumber, nextId.incrementAndGet()));
+    public Watcher addNewWatcher(long deptId, String subject, long courseId, String catalogNumber) {
+        Watcher newWatcher = new Watcher(deptId, subject, courseId, catalogNumber, nextId.incrementAndGet());
+        watchers.add(newWatcher);
+        return newWatcher;
     }
 
-    public List<String> getEventsByWatcherId(long watcherId) {
+    public Watcher getWatcherId(long watcherId) {
         for (Watcher watcher: watchers) {
             if (watcher.getWatcherId() == watcherId) {
-                return watcher.getEvents();
+                return watcher;
             }
         }
         throw new ResourceNotFoundException("Unable to find requested watcher.");
