@@ -4,6 +4,7 @@ import com.cmpt213.a5.courseplanner.model.RawData;
 import com.cmpt213.a5.courseplanner.model.RawDataSortByComponentCode;
 import com.cmpt213.a5.courseplanner.model.RawDataSortByInstructor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,13 +16,15 @@ public class Offering implements Comparable<Offering> {
 
     private String location;
 
-    // TODO: probably need a instructors string here.
-    private List<String> instructors = new ArrayList<>();
+    @JsonProperty("instructors")
+    private String instructorsString;
 
     private int year;
     private int semesterCode;
     private String term;
 
+    @JsonIgnore
+    private List<String> instructors = new ArrayList<>();
 
     @JsonIgnore
     private List<Component> components = new ArrayList<>();
@@ -65,6 +68,9 @@ public class Offering implements Comparable<Offering> {
             }
         }
 
+        instructorsString = convertInstructorListToString();
+
+
         Collections.sort(offeringRawData, new RawDataSortByComponentCode());
 
         List<RawData> componentRawData = new ArrayList<>();
@@ -87,6 +93,14 @@ public class Offering implements Comparable<Offering> {
             }
         }
         components.add(new Component(componentRawData));
+    }
+
+    private String convertInstructorListToString() {
+        StringBuilder instructorsString = new StringBuilder(instructors.get(0));
+        for (int i = 1; i < instructors.size(); i++) {
+            instructorsString.append(", ").append(instructors.get(i));
+        }
+        return instructorsString.toString();
     }
 
 
@@ -139,6 +153,13 @@ public class Offering implements Comparable<Offering> {
         this.term = term;
     }
 
+    public String getInstructorsString() {
+        return instructorsString;
+    }
+
+    public void setInstructorsString(String instructorsString) {
+        this.instructorsString = instructorsString;
+    }
 
 
     public void printInModeDumpFormat() {
@@ -170,6 +191,7 @@ public class Offering implements Comparable<Offering> {
         if (isNewInstructor) {
             instructors.add(newRawData.getInstructor());
             Collections.sort(instructors);
+            instructorsString = convertInstructorListToString();
         }
 
 
